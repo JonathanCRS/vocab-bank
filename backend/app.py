@@ -51,26 +51,14 @@ def add_word():
         "INSERT INTO words (word, definition, translation) VALUES (?, ?, ?)",
         (word, definition, translation)
     )
-
-    new_word.id = cursor.lastrowid
-
-    cursor.execute(
-        "SELECT id, word, definition, translation FROM words where id =?",
-        (new_word_id)
-    )
-    row = cursor.fetchone()
-
     conn.commit()
-    conn.close()
 
-    new_word = {
-        "id": row[0],
-        "word": row[1],
-        "definition": row[2],
-        "translation": row[3]
-    }
-
-    return jsonify(new_word), 201
+    return jsonify({
+        "id": cursor.lastrowid,
+        "word": word,
+        "definition": definition,
+        "translation": translation
+    }), 201
 
 if __name__ == "__main__":
     app.run(debug=True)
