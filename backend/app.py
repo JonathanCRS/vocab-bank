@@ -60,5 +60,18 @@ def add_word():
         "translation": translation
     }), 201
 
+@app.route("/words/<int:word_id>", methods=["DELETE"])
+def delete_word(word_id):
+    conn = sqlite3.connect("vocab.db")
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "DELETE FROM words WHERE id = ?",
+        (word_id,)
+    )
+    conn.commit()
+
+    return jsonify({"message": "word deleted"}), 200
+
 if __name__ == "__main__":
     app.run(debug=True)
