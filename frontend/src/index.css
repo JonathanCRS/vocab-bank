@@ -11,3 +11,74 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.app {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.word-list {
+  list-style: none;
+  padding: 0;
+}
+
+.word-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.word-title {
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.word-title:hover {
+  color: #4f46e5;
+}
+
+.word-details {
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.actions {
+  margin-top: 12px;
+}
+
+button {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.delete {
+  background: #ef4444;
+  color: white;
+}
+
+button.delete:hover {
+  background: #dc2626;
+}
+
+.content {
+  max-width: 700px;       /* same as .app max-width if you want */
+  margin: 0 auto;         /* center everything inside horizontally */
+}
+
+form {
+  width: 100%;            /* take full width of content container */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

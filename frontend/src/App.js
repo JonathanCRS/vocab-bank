@@ -26,10 +26,13 @@ function App() {
     }
 
     return (
-        <div>
-            <h1>Vocab Bank</h1>
-            <WordForm onAddWord={handleAddWord}></WordForm>
-            <WordList words={words} deleteWord={handleDelete}></WordList>
+       <div className="app">
+            <h1>📘 Vocab Bank</h1>
+
+            <div className="content">
+                <WordForm onAddWord={handleAddWord} />
+                <WordList words={words} deleteWord={handleDelete} />
+            </div>
         </div>
     )
 }
