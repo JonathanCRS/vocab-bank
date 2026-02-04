@@ -73,5 +73,30 @@ def delete_word(word_id):
 
     return jsonify({"message": "word deleted"}), 200
 
+@app.route("/words/<int:word_id>", methods=["PUT"])
+def update_word(word_id):
+    data = request.get_json()
+
+    conn = sqlite3.connect("vocab.db")
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+        UPDATE words
+        SET word = ?, definition = ?, translation = ?
+        WHERE id = ?
+        """,
+        (data["word"], data["definition"], data["translation"], word_id)
+    )
+
+    conn.commit()
+
+    return jsonify({
+        "id": word_id,
+        "word": data["word"],
+        "definition": data["definition"],
+        "translation": data["translation"],
+    }), 200
+    
 if __name__ == "__main__":
     app.run(debug=True)
